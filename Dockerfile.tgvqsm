@@ -7,7 +7,7 @@
 # 
 #     https://github.com/kaczmarj/neurodocker
 
-FROM debian:jessie-backports
+FROM debian:stretch
 
 ARG DEBIAN_FRONTEND="noninteractive"
 
@@ -43,9 +43,6 @@ RUN printf '#!/bin/bash\nls -la' > /usr/bin/ll
 
 RUN chmod +x /usr/bin/ll
 
-COPY ["globalMountPointList.txt", "/globalMountPointList.txt"]
-
-RUN mkdir `cat /globalMountPointList.txt`
 
 RUN apt-get update -qq \
     && apt-get install -y --quiet \
